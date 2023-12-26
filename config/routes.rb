@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :lenses, only: [:show]
+  resources :lens_types, only: [:index] do
+    member do
+      get 'select_lens'
+    end
+  end
 end

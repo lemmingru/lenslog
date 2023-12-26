@@ -1,7 +1,20 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+# db/seeds.rb
+
+# Создаем пять типов линз
+LensType.create(manufacturer: 'Acuvue Oasis', prescription: '-1.75', wearing_period: 14)
+LensType.create(manufacturer: 'Acuvue Oasis', prescription: '-2.0', wearing_period: 14)
+LensType.create(manufacturer: 'Acuvue Oasis', prescription: '-2.5', wearing_period: 14)
+LensType.create(manufacturer: 'B&L', prescription: '-1.75', wearing_period: 1)
+LensType.create(manufacturer: 'B&L', prescription: '-2.0', wearing_period: 1)
+
+puts 'Five LensTypes created successfully.'
+
+# Создаем четыре линзы
+Lens.create(status: 'Active', usage_days: 10, lens_type: LensType.find(1))
+Lens.create(status: 'Active', usage_days: 10, lens_type: LensType.find(1))
+Lens.create(status: 'Active', usage_days: 1, lens_type: LensType.find(4))
+Lens.create(status: 'Active', usage_days: 1, lens_type: LensType.find(4))
+
+
+
+puts 'Four Lenses created successfully.'

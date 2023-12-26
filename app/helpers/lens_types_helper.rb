@@ -1,0 +1,2 @@
+module LensTypesHelper
+end

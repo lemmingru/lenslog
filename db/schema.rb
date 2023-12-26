@@ -10,5 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_26_090519) do
+  create_table "lens_types", force: :cascade do |t|
+    t.string "manufacturer"
+    t.string "prescription"
+    t.integer "wearing_period"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lenses", force: :cascade do |t|
+    t.string "status"
+    t.integer "usage_days"
+    t.integer "lens_type_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lens_type_id"], name: "index_lenses_on_lens_type_id"
+  end
+
+  add_foreign_key "lenses", "lens_types"
 end

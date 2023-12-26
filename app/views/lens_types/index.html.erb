@@ -1,0 +1,33 @@
+
+<div class="ui container">
+  <h1 class="ui header">All Lens Types</h1>
+
+  <div class="ui grid">
+    <div class="six wide column">
+      <table class="ui celled table">
+        <thead>
+          <tr>
+            <th>Manufacturer</th>
+            <th>Prescription</th>
+            <th>Wearing Period</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @lens_types.each do |lens_type| %>
+            <tr>
+              <td><%= lens_type.manufacturer %></td>
+              <td><%= lens_type.prescription %></td>
+              <td><%= lens_type.wearing_period %> d</td>
+              <td>
+                <%= link_to 'Select', select_lens_lens_type_path(lens_type), class: 'ui button' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

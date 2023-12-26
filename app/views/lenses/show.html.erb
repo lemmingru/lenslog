@@ -1,0 +1,8 @@
+<h1 class="ui header">Lens Details</h1>
+
+<div class="ui segment">
+  <p><strong>Type:</strong> <%= @lens.lens_type.manufacturer %></p>
+  <p><strong>Usage:</strong> <%= @lens.usage_days %></p>
+</div>
+
+<%= link_to 'Back', lense_path, class: 'ui button' %>
