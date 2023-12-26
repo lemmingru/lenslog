@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>LensLog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <%= render 'layouts/rails_default' %>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
-
-  <body>
-    <%= yield %>
-  </body>
+  <%= javascript_importmap_tags %>
+  <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css' %>
+  <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js' %>
+</head>
+<body>
+<%= render 'layouts/header' %>
+<div class="ui container">
+  <% flash.each do |message_type, message| %>
+    <%= content_tag(:div, message, class: "ui message #{message_type}") %>
+  <% end %>
+  <%= yield %>
+  <%= render 'layouts/footer' %>
+  <%= debug(params) if Rails.env.development? %>
+</div>
+</body>
 </html>
+

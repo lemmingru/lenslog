@@ -1,0 +1,31 @@
+<header class="ui fixed inverted menu">
+  <div class="ui container">
+    <%= link_to "sample app", root_path, id: "logo", class: "header item" %>
+    <div class="ui right secondary menu">
+      <div class="item">
+        <button id="hamburger" type="button" class="ui icon toggle basic button">
+          <i class="bars icon"></i>
+        </button>
+      </div>
+      <div class="ui inverted menu" id="navbar-menu">
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Home",   root_path, class: "item" %></li>
+
+          <% if logged_in? %>
+            <li><%= link_to "Users", users_path, class: "item" %></li>
+            <li class="ui dropdown item">
+              <a href="#" id="account" class="text">Account <i class="dropdown icon"></i></a>
+              <div class="menu">
+                <div class="item"><%= link_to "Profile", current_user %></div>
+                <div class="item"><%= link_to "Settings", edit_user_path(current_user) %></div>
+                <div class="item"><%= link_to "Log out", logout_path, data: { "turbo-method": :delete } %></div>
+              </div>
+            </li>
+          <% else %>
+            <li><%= link_to "Log in", login_path, class: "item" %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
