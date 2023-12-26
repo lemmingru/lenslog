@@ -1,0 +1,18 @@
+ru:
+  hello: "Привет, мир!"
+  views:
+    lenses:
+      show:
+        header: "Информация о линзах"
+        type: "Тип"
+        usage_days: "Дней использования"
+        back: "Назад"
+    lens_types:
+      index:
+        header: "Выберите тип линз"
+        manufacturer: "Производитель"
+        prescription: "Диоптрии"
+        wearing_period: "Длительность носки"
+        action: "Действие"
+        d: "д."
+        select: "Выбрать"

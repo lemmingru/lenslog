@@ -1,8 +1,8 @@
-<h1 class="ui header">Lens Details</h1>
+<h1 class="ui header"><%= t('views.lenses.show.header') %></h1>
 
 <div class="ui segment">
-  <p><strong>Type:</strong> <%= @lens.lens_type.manufacturer %></p>
-  <p><strong>Usage:</strong> <%= @lens.usage_days %></p>
+  <p><strong><%= t('views.lenses.show.type') %>:</strong> <%= @lens.lens_type.manufacturer %></p>
+  <p><strong><%= t('views.lenses.show.usage_days') %>:</strong> <%= @lens.usage_days %></p>
 </div>
 
-<%= link_to 'Back', lense_path, class: 'ui button' %>
+<%= link_to t('views.lenses.show.back'), lense_path, class: 'ui button' %>
