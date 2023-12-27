@@ -1,0 +1,25 @@
+<%= form_with(model: @user, class: 'ui form') do |f| %>
+  <%= render 'shared/error_messages' %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'ui input' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email, class: 'ui input' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: 'ui input' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: 'ui input' %>
+  </div>
+
+  <%= f.submit t('views.users.form.save_changes'), class: "ui primary button" %>
+<% end %>
