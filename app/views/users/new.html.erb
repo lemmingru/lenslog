@@ -1,8 +1,11 @@
 <% provide(:title, t('views.users.new.sign_up')) %>
 <% provide(:button_text, t('views.users.new.create_my_account')) %>
-<h1><%= t('views.users.new.sign_up')%></h1>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+
+<h1 class="ui header"><%= t('views.users.new.sign_up') %></h1>
+
+<div class="ui grid">
+  <div class="six wide column left">
     <%= render 'form' %>
   </div>
 </div>
+
