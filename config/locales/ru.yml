@@ -276,16 +276,37 @@ ru:
       short: "%d %b, %H:%M"
     pm: вечера
 
+  controllers:
+    sessions:
+      flash:
+        invalid_password: "Неверный пароль или имя пользователя"
+    application:
+      flash:
+        please_login: "Пожалуйста, войдите в систему!"
+    lenses:
+      lens_not_found: "Линза не найдена!"
+      prohibited: "У вас нет прав для просмотра этой линзы!"
   views:
     layouts:
       header:
         appname: "Журнал линз"
+        logout: "Выход"
+        login: "Вход"
     lenses:
       show:
         header: "Информация о линзах"
         type: "Тип"
         usage_days: "Дней использования"
         back: "Назад"
+      index:
+        days: "Дней осталось"
+        action: "Действия"
+        use_button: "Использовать"
+        header: "Линзы, которые используются сейчас"
+        d: "Использовано дней"
+        out_of: "из"
+        name: "Название линзы"
+        last_usage: "Дата последнего использования"
     lens_types:
       index:
         header: "Выберите тип линз"

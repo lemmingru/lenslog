@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:success] = 'Profile updated'
+      flash[:positive] = 'Profile updated'
       redirect_to @user
     else
       render 'edit', status: :unprocessable_entity
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = 'User deleted'
+    flash[:positive] = 'User deleted'
     redirect_to users_url, status: :see_other
   end
 
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     return if logged_in?
 
     store_location
-    flash[:danger] = 'Please log in.'
+    flash[:negative] = 'Please log in.'
     redirect_to login_url, status: :see_other
   end
 

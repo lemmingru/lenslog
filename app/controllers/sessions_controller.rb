@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
       redirect_to forwarding_url || @user
 
     else
-      flash.now[:danger] = 'Invalid email/password combination'
+      flash.now[:negative] = t('controllers.sessions.flash.invalid_password')
       render 'new', status: :unprocessable_entity
     end
   end
