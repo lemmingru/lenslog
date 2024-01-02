@@ -1,5 +1,5 @@
 class Lens < ApplicationRecord
-  self.table_name = 'lenses'
   belongs_to :lens_type
+  has_many :usages
   validates :status, inclusion: { in: %w[Active Inactive Disposed] }
 end

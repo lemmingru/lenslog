@@ -18,7 +18,9 @@
           <tr class="<%= 'negative' if lens.usage_days >= lens.lens_type.wearing_period %>">
             <td><%= lens.lens_type.manufacturer %> (<%= lens.lens_type.prescription %>)</td>
             <td><%= lens.usage_days %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></td>
-            <td>12.12.12</td>
+            <td class="center aligned">
+              <%= lens.last_usage_date||'-' %>
+            </td>
             <td>Использовать<br>
             Заменить<br>
             Выкинуть</td>

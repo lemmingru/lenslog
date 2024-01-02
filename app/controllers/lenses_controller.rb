@@ -31,7 +31,6 @@ class LensesController < ApplicationController
   end
 
   def check_lens_ownership
-    @lens = Lens.find(params[:id])
     return if @lens.lens_type.user == current_user
 
     flash[:negative] = t('controllers.lenses.prohibited')

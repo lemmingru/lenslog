@@ -7,6 +7,6 @@ class LensTypesController < ApplicationController
   def select_lens
     @lens_type = LensType.find(params[:id])
     @new_lens = Lens.create(status: 'Active', usage_days: 0, lens_type: @lens_type)
-    redirect_to lens_path
+    redirect_to lenses_path
   end
 end

@@ -7,8 +7,8 @@ Rails.application.routes.draw do
       get 'select_lens'
     end
   end
-  get '/lens', to: 'lenses#index'
-  get '/lens/:id', to: 'lenses#show'
+  get '/lenses', to: 'lenses#index'
+  get '/lenses/:id', to: 'lenses#show'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
