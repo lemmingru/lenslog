@@ -1,6 +1,9 @@
 <div class="ui container">
   <h1 class="ui header"><%= t('views.lenses.index.header') %></h1>
-
+  <% if @lenses.empty? %>
+    <p><%= t('views.lenses.index.empty_list') %> </p>
+    <p><%= link_to t('views.lenses.index.add_lens'), lens_types_path, class: 'ui blue button' %></p>
+  <% else %>
   <div class="ui stackable grid">
     <div class="column">
       <table class="ui table">
@@ -22,4 +25,5 @@
       </table>
     </div>
   </div>
+    <% end %>
 </div>
