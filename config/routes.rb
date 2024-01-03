@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'usages/new'
+  get 'usages/create'
+  get 'usages/edit'
+  get 'usages/delete'
   root 'lenses#index'
   get 'session/new'
   resources :users
@@ -7,8 +11,11 @@ Rails.application.routes.draw do
       get 'select_lens'
     end
   end
-  get '/lenses', to: 'lenses#index'
-  get '/lenses/:id', to: 'lenses#show'
+  resources :lenses, only: %i[index show] do
+    member do
+      get 'add_usage'
+    end
+  end
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

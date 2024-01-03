@@ -294,19 +294,21 @@ ru:
         login: "Вход"
     lenses:
       show:
-        header: "Информация о линзах"
+        header: "Линзы"
         type: "Тип"
         usage_days: "Дней использования"
         back: "Назад"
+        day: "д."
       index:
         days: "Дней осталось"
         action: "Действия"
-        use_button: "Использовать"
-        header: "Линзы, которые используются сейчас"
+        use_button: "+1 день"
+        header: "Используемые линзы"
         d: "Использовано дней"
         out_of: "из"
         name: "Название линзы"
         last_usage: "Дата последнего использования"
+        other_actions: "Другие действия"
     lens_types:
       index:
         header: "Выберите тип линз"
@@ -316,6 +318,8 @@ ru:
         action: "Действие"
         d: "д."
         select: "Выбрать"
+        use: "Использовать"
+        other_actions: "Другие действия"
     shared:
       error_messages:
         form_errors: "Ошибки при создании пользователя"

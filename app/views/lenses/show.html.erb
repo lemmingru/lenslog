@@ -1,8 +1,15 @@
-<h1 class="ui header"><%= t('views.lenses.show.header') %></h1>
+<h1 class="ui header"><%= t('views.lenses.show.header') %> "<%= @lens.lens_type.manufacturer %> (<%= @lens.lens_type.prescription %>)"</h1>
 
 <div class="ui segment">
-  <p><strong><%= t('views.lenses.show.type') %>:</strong> <%= @lens.lens_type.manufacturer %></p>
   <p><strong><%= t('views.lenses.show.usage_days') %>:</strong> <%= @lens.usage_days %></p>
+  <ul>
+    <% @usages.each do |usage| %>
+      <li>
+        <%= l(usage.usage_date) %> - <%= usage.usage_days %> <%= t('views.lenses.show.day') %>
+      </li>
+    <% end %>
+  </ul>
+
 </div>
 
 <%= link_to t('views.lenses.show.back'), lenses_path, class: 'ui button' %>
