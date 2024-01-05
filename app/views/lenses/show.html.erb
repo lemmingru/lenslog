@@ -2,13 +2,15 @@
 
 <div class="ui segment">
   <p><strong><%= t('views.lenses.show.usage_days') %>:</strong> <%= @lens.usage_days %></p>
-  <ul>
+  <div class="ui relaxed divided list">
     <% @usages.each do |usage| %>
-      <li>
+      <div class="item">
         <%= l(usage.usage_date) %> - <%= usage.usage_days %> <%= t('views.lenses.show.day') %>
-      </li>
+        <%= link_to t('views.lenses.show.delete'), delete_usage_lens_path(@lens, usage), class: 'mini ui red button' %>
+
+      </div>
     <% end %>
-  </ul>
+  </div>
 
 </div>
 

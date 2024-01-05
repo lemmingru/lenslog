@@ -12,6 +12,10 @@ ru:
         email: "Email"
         password: "Пароль"
         password_confirmation: "Подтверждение пароля"
+      lens_type:
+        manufacturer: "Производитель"
+        prescription: "Оптическая сила (диоптрии)"
+        wearing_period: "Период носки"
 
   date:
     abbr_day_names:
@@ -286,19 +290,26 @@ ru:
     lenses:
       lens_not_found: "Линза не найдена!"
       prohibited: "У вас нет прав для просмотра этой линзы!"
+      usage_deleted: "Запись об использовании удалена"
+      delete_error: "Ошибка удаления записи об использовании"
+    lens_types:
+      created: "Новый тип линз добавлен!"
   views:
     layouts:
       header:
         appname: "Журнал линз"
         logout: "Выход"
         login: "Вход"
+        lens_types: "Типы линз"
+        lenses: "Мои линзы"
     lenses:
       show:
-        header: "Линзы"
+        header: "Журнал использования линз"
         type: "Тип"
-        usage_days: "Дней использования"
+        usage_days: "Всего дней использования:"
         back: "Назад"
         day: "д."
+        delete: "Удалить запись"
       index:
         days: "Дней осталось"
         action: "Действия"
@@ -311,6 +322,7 @@ ru:
         other_actions: "Другие действия"
         empty_list: "В системе отсутствуют записи о линзах, которые вы носите."
         add_lens: "Открыть новые линзы"
+        lens_log: "Журнал использования"
     lens_types:
       index:
         header: "Выберите тип линз"
@@ -324,9 +336,15 @@ ru:
         other_actions: "Другие действия"
         empty_list: "Список типов линз пуст! Нужен хотя бы один тип ваших линз для начала работы."
         new: "Добавить новый тип"
+      form:
+        save_changes: "Добавить новый тип линз"
+      new:
+        add_lens_type: "Новый тип линз"
     shared:
       error_messages:
         form_errors: "Ошибки при создании пользователя"
+      lens_type_error_messages:
+        form_errors: "При создании нового типа линз обнаружены следующие ошибки:"
     users:
       form:
         save_changes: "Сохранить изменения"

@@ -30,6 +30,21 @@ class LensesController < ApplicationController
     puts "Ошибка транзакции: #{e.message}"
   end
 
+  def delete_usage
+    lens = Lens.find(params[:id])
+    usage = Usage.find(params[:format])
+    if usage && usage.lens_id == lens.id
+      lens.usage_days -= usage.usage_days
+      usage.destroy
+      lens.save
+      flash[:success] = t('controllers.lenses.usage_deleted')
+    else
+      flash[:error] = t('controllers.lenses.delete_error')
+    end
+    redirect_to lens_path(lens)
+  end
+
+
   private
 
   def set_lens

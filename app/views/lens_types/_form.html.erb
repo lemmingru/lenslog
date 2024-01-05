@@ -1,0 +1,20 @@
+<%= form_with(model: @lens_type, class: 'ui form') do |f| %>
+  <%= render 'shared/lens_type_error_messages' %>
+
+  <div class="field">
+    <%= f.label :manufacturer %>
+    <%= f.text_field :manufacturer, class: 'ui input' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prescription %>
+    <%= f.text_field :prescription, class: 'ui input' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :wearing_period %>
+    <%= f.text_field :wearing_period, class: 'ui input' %>
+  </div>
+
+  <%= f.submit t('views.lens_types.form.save_changes'), class: "ui primary button" %>
+<% end %>

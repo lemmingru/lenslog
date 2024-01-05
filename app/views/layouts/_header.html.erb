@@ -1,6 +1,8 @@
 <header class="ui menu">
   <div class="ui container">
     <%= link_to t('views.layouts.header.appname'), root_path, id: "logo", class: "header item" %>
+    <%= link_to t('views.layouts.header.lens_types'), lens_types_path, id: "lens_types", class: "header item" %>
+    <%= link_to t('views.layouts.header.lenses'), lenses_path, id: "lenses", class: "header item" %>
     <% if logged_in? %>
       <%= link_to t('views.layouts.header.logout'), logout_path, data: { "turbo-method": :delete }, class: "header item" %>
     <% else %>

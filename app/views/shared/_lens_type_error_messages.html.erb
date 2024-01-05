@@ -1,0 +1,12 @@
+<% if @lens_type.errors.any? %>
+  <div class="ui negative message">
+    <div class="header">
+      <%= t('views.shared.lens_type_error_messages.form_errors')%>:
+    </div>
+    <ul class="list">
+      <% @lens_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

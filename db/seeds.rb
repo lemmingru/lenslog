@@ -31,8 +31,8 @@ User.create!(name: 'Иван Иванов',
 LensType.create(user: User.find(1), manufacturer: 'Acuvue Oasis', prescription: '-1.75', wearing_period: 14)
 LensType.create(user: User.find(1), manufacturer: 'Acuvue Oasis', prescription: '-2.0', wearing_period: 14)
 LensType.create(user: User.find(2), manufacturer: 'Acuvue Oasis', prescription: '-2.5', wearing_period: 14)
-LensType.create(user: User.find(1), manufacturer: 'B&L', prescription: '-1.75', wearing_period: 1)
-LensType.create(user: User.find(2), manufacturer: 'B&L', prescription: '-2.0', wearing_period: 1)
+LensType.create(user: User.find(1), manufacturer: 'BL', prescription: '-1.75', wearing_period: 2)
+LensType.create(user: User.find(2), manufacturer: 'BL', prescription: '-2.0', wearing_period: 2)
 
 puts 'Создали типы линз'
 
@@ -40,7 +40,7 @@ puts 'Создали типы линз'
 Lens.create(status: 'Active', usage_days: 4, last_usage_date: '2024-01-01', lens_type: LensType.find(1))
 Lens.create(status: 'Active', usage_days: 0, lens_type: LensType.find(2))
 Lens.create(status: 'Active', usage_days: 5, last_usage_date: '2024-01-01', lens_type: LensType.find(3))
-Lens.create(status: 'Active', usage_days: 1, lens_type: LensType.find(5))
+Lens.create(status: 'Active', usage_days: 1, lens_type: LensType.find(4))
 
 puts 'Создали линзы'
 

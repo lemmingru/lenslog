@@ -2,9 +2,9 @@
   <h1 class="ui header"><%= t('views.lenses.index.header') %></h1>
   <% if @lenses.empty? %>
     <p><%= t('views.lenses.index.empty_list') %> </p>
-    <p><%= link_to t('views.lenses.index.add_lens'), lens_types_path, class: 'ui blue button' %></p>
+
   <% else %>
-  <div class="ui stackable grid">
+  <div class="ui grid">
     <div class="column">
       <table class="ui table">
         <tbody>
@@ -16,8 +16,8 @@
               <%= t('views.lenses.index.last_usage') %>: <strong><%= (l(lens.last_usage_date) if lens.last_usage_date.present?) || '–' %></strong>
             </td>
             <td>
-              <%= link_to t('views.lenses.index.use_button'), add_usage_lens_path(lens), class: 'ui blue button' %><br>
-              <%= link_to t('views.lenses.index.other_actions'), lens_path(lens) %>
+              <%= link_to t('views.lenses.index.use_button'), add_usage_lens_path(lens), class: 'mini ui blue button' %><br>
+              <%= link_to t('views.lenses.index.lens_log'), lens_path(lens) %>
             </td>
           </tr>
         <% end %>
@@ -26,4 +26,5 @@
     </div>
   </div>
     <% end %>
+  <p><%= link_to t('views.lenses.index.add_lens'), lens_types_path, class: 'mini ui blue button' %></p>
 </div>
