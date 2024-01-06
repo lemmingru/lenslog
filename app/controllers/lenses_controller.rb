@@ -15,12 +15,13 @@ class LensesController < ApplicationController
   end
 
   def add_usage
+    hours = params[:hours].to_i || 24
     Lens.transaction do
       now = Time.now
 
-      Usage.create!(usage_days: 1, usage_date: now, lens: @lens)
+      Usage.create!(usage_hours: hours, usage_date: now, lens: @lens)
 
-      @lens.usage_days += 1
+      @lens.usage_hours += hours
       @lens.last_usage_date = now
       @lens.save!
     end
@@ -32,9 +33,9 @@ class LensesController < ApplicationController
 
   def delete_usage
     lens = Lens.find(params[:id])
-    usage = Usage.find(params[:format])
+    usage = Usage.find(params[:usage_id])
     if usage && usage.lens_id == lens.id
-      lens.usage_days -= usage.usage_days
+      lens.usage_hours -= usage.usage_hours
       usage.destroy
       lens.save
       flash[:success] = t('controllers.lenses.usage_deleted')

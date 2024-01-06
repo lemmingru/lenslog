@@ -9,15 +9,29 @@
       <table class="ui table">
         <tbody>
         <% @lenses.each do |lens| %>
-          <tr class="<%= 'negative' if lens.usage_days >= lens.lens_type.wearing_period %>">
+          <tr class="<%= 'negative' if lens.usage_hours/24 >= lens.lens_type.wearing_period %>">
             <td>
-              <%= t('views.lenses.index.name') %>: <strong><%= lens.lens_type.manufacturer %> (<%= lens.lens_type.prescription %>)</strong><br>
-              <%= t('views.lenses.index.d') %>: <strong><%= lens.usage_days %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></strong><br>
+              <%= t('views.lenses.index.name') %>: <strong><%= lens.lens_type.manufacturer.capitalize %> (<%= show_prescription(lens.lens_type.prescription) %>)</strong><br>
+              <%= t('views.lenses.index.d') %>: <strong><%= show_rounded(lens.usage_hours/24) %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></strong><br>
               <%= t('views.lenses.index.last_usage') %>: <strong><%= (l(lens.last_usage_date) if lens.last_usage_date.present?) || '–' %></strong>
             </td>
             <td>
-              <%= link_to t('views.lenses.index.use_button'), add_usage_lens_path(lens), class: 'mini ui blue button' %><br>
-              <%= link_to t('views.lenses.index.lens_log'), lens_path(lens) %>
+              <div class="ui compact menu">
+                <%= link_to t('views.lenses.index.use_1_day'), add_usage_lens_path(lens, hours: 24), class: 'item', data: { tooltip: t('views.lenses.index.use_1_day_tooltip')  }%>
+                <%= link_to t('views.lenses.index.use_half_day'), add_usage_lens_path(lens, hours: 12), class: 'item', data: { tooltip: t('views.lenses.index.use_half_day_tooltip')  } %>
+                <div class="ui simple dropdown item">
+                  <%= t('views.lenses.index.additional_actions') %>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    <%= link_to t('views.lenses.index.lens_log'), lens_path(lens), class: 'item' %>
+                    <div class="item">Что-то еще</div>
+                    <div class="item">И еще что-то эдакое</div>
+
+                  </div>
+                </div>
+
+              </div>
+
             </td>
           </tr>
         <% end %>

@@ -1,12 +1,12 @@
-<h1 class="ui header"><%= t('views.lenses.show.header') %> "<%= @lens.lens_type.manufacturer %> (<%= @lens.lens_type.prescription %>)"</h1>
+<h1 class="ui header"><%= t('views.lenses.show.header') %> "<%= @lens.lens_type.manufacturer.capitalize %> (<%= show_prescription(@lens.lens_type.prescription) %>)"</h1>
 
 <div class="ui segment">
-  <p><strong><%= t('views.lenses.show.usage_days') %>:</strong> <%= @lens.usage_days %></p>
+  <p><strong><%= t('views.lenses.show.usage_hours') %>:</strong> <%= (@lens.usage_hours/24).round(1) %></p>
   <div class="ui relaxed divided list">
     <% @usages.each do |usage| %>
       <div class="item">
-        <%= l(usage.usage_date) %> - <%= usage.usage_days %> <%= t('views.lenses.show.day') %>
-        <%= link_to t('views.lenses.show.delete'), delete_usage_lens_path(@lens, usage), class: 'mini ui red button' %>
+        <%= l(usage.usage_date) %> - <%= usage.usage_hours.to_i %> <%= t('views.lenses.show.hours') %>
+        <%= link_to t('views.lenses.show.delete'), delete_usage_lens_path(@lens, usage_id: usage), class: 'ui link' %>
 
       </div>
     <% end %>

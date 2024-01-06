@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_02_141027) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_06_113500) do
   create_table "lens_types", force: :cascade do |t|
     t.string "manufacturer"
     t.string "prescription"
@@ -23,7 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_141027) do
 
   create_table "lenses", force: :cascade do |t|
     t.string "status"
-    t.integer "usage_days"
+    t.float "usage_hours"
     t.integer "lens_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_02_141027) do
 
   create_table "usages", force: :cascade do |t|
     t.integer "lens_id", null: false
-    t.integer "usage_days"
+    t.float "usage_hours"
     t.date "usage_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

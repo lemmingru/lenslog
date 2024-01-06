@@ -2,10 +2,10 @@
 
 one:
   lens: one
-  usage_days: 1
+  usage_hours: 1
   usage_date: 2024-01-02
 
 two:
   lens: two
-  usage_days: 1
+  usage_hours: 1
   usage_date: 2024-01-02
