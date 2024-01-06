@@ -3,10 +3,16 @@
 <div class="ui segment">
   <p><strong><%= t('views.lenses.show.usage_hours') %>:</strong> <%= (@lens.usage_hours/24).round(1) %></p>
   <div class="ui relaxed divided list">
+    <% count = 0 %>
     <% @usages.each do |usage| %>
       <div class="item">
-        <%= l(usage.usage_date) %> - <%= usage.usage_hours.to_i %> <%= t('views.lenses.show.hours') %>
-        <%= link_to t('views.lenses.show.delete'), delete_usage_lens_path(@lens, usage_id: usage), class: 'ui link' %>
+        <%= count += 1 %>. <%= t('views.lenses.show.on_date') %>
+        <%= l(usage.usage_date) %> <%= t('views.lenses.show.use') %> <%= usage.usage_hours.to_i %> <%= t('views.lenses.show.hours') %>
+        <span>
+        <%= link_to delete_usage_lens_path(@lens, usage_id: usage) do %>
+          <i class="icon delete"></i>
+        <% end %>
+        </span>
 
       </div>
     <% end %>

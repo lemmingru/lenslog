@@ -4,41 +4,39 @@
     <p><%= t('views.lenses.index.empty_list') %> </p>
 
   <% else %>
-  <div class="ui grid">
-    <div class="column">
-      <table class="ui table">
-        <tbody>
-        <% @lenses.each do |lens| %>
-          <tr class="<%= 'negative' if lens.usage_hours/24 >= lens.lens_type.wearing_period %>">
-            <td>
-              <%= t('views.lenses.index.name') %>: <strong><%= lens.lens_type.manufacturer.capitalize %> (<%= show_prescription(lens.lens_type.prescription) %>)</strong><br>
-              <%= t('views.lenses.index.d') %>: <strong><%= show_rounded(lens.usage_hours/24) %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></strong><br>
-              <%= t('views.lenses.index.last_usage') %>: <strong><%= (l(lens.last_usage_date) if lens.last_usage_date.present?) || '–' %></strong>
-            </td>
-            <td>
-              <div class="ui compact menu">
-                <%= link_to t('views.lenses.index.use_1_day'), add_usage_lens_path(lens, hours: 24), class: 'item', data: { tooltip: t('views.lenses.index.use_1_day_tooltip')  }%>
-                <%= link_to t('views.lenses.index.use_half_day'), add_usage_lens_path(lens, hours: 12), class: 'item', data: { tooltip: t('views.lenses.index.use_half_day_tooltip')  } %>
-                <div class="ui simple dropdown item">
-                  <%= t('views.lenses.index.additional_actions') %>
-                  <i class="dropdown icon"></i>
-                  <div class="menu">
-                    <%= link_to t('views.lenses.index.lens_log'), lens_path(lens), class: 'item' %>
-                    <div class="item">Что-то еще</div>
-                    <div class="item">И еще что-то эдакое</div>
+    <div class="ui divided items">
+      <% @lenses.each do |lens| %>
+        <div class="item">
+        <div class="middle aligned content">
+          <div class="header">
+            <%= lens.lens_type.manufacturer.capitalize %> (<%= show_prescription(lens.lens_type.prescription) %>)<br>
+          </div>
+          <div class="description">
+            <%= t('views.lenses.index.d') %>: <strong><%= show_rounded(lens.usage_hours/24) %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></strong><br>
+            <%= t('views.lenses.index.last_usage') %>: <strong><%= (l(lens.last_usage_date) if lens.last_usage_date.present?) || '–' %></strong>
+          </div>
+          <div class="extra">
+            <div class="ui left floated menu">
+                 <%= link_to t('views.lenses.index.use_1_day'), add_usage_lens_path(lens, hours: 24), class: 'link item' %>
+                 <%= link_to t('views.lenses.index.use_half_day'), add_usage_lens_path(lens, hours: 12), class: 'link item' %>
 
-                  </div>
+              <div class="ui simple dropdown item">
+                <%= t('views.lenses.index.additional_actions') %>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <%= link_to t('views.lenses.index.lens_log'), lens_path(lens), class: 'item' %>
+                  <div class="item">Что-то еще</div>
+                  <div class="item">И еще что-то эдакое</div>
                 </div>
-
               </div>
 
-            </td>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
+            </div>
+
+          </div>
+        </div>
+        </div>
+      <% end %>
+
     </div>
-  </div>
-    <% end %>
-  <p><%= link_to t('views.lenses.index.add_lens'), lens_types_path, class: 'mini ui blue button' %></p>
+  <% end %>
 </div>

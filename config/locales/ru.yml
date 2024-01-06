@@ -311,6 +311,10 @@ ru:
         day: "д."
         delete: "Удалить запись"
         hours: "ч."
+        another_actions: "Действия"
+        use: "использовано"
+        on: "За"
+        on_date: "За"
       index:
         days: "Дней осталось"
         action: "Действия"
