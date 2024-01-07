@@ -339,6 +339,8 @@ ru:
         despose: "Выбросить"
         change_lens: "Сменить"
         confirm_change: "Подтвердите замену этих линз на новые"
+        ok_button: "Ok"
+        cancel_button: "Отмена"
     lens_types:
       index:
         header: "Выберите тип линз"

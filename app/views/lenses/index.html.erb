@@ -32,10 +32,12 @@
                   <%= link_to t('views.lenses.index.lens_log'), lens_path(lens), class: 'item' %>
                   <%= link_to t('views.lenses.index.change_lens'),
                               change_lens_path(lens),
+                              class: 'item',
                               data: {
-                                confirm: t('views.lenses.index.confirm_change')
-                              },
-                              class: 'item' %>
+                                "turbo-method": :get,
+                                "turbo-confirm": t('views.lenses.index.confirm_change')
+                              } %>
+
                   <%= link_to t('views.lenses.index.despose'),
                               lens,
                               method: :delete,
