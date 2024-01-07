@@ -1,36 +1,39 @@
-
 <div class="ui container">
   <h1 class="ui header"><%= t('views.lens_types.index.header') %></h1>
   <% if @lens_types.empty? %>
     <p><%= t('views.lens_types.index.empty_list') %></p>
-    <% else %>
-  <div class="ui grid">
-    <div class="column">
-      <table class="ui celled table">
-        <thead>
-          <tr>
-            <th><%= t('views.lens_types.index.manufacturer') %></th>
-            <th><%= t('views.lens_types.index.prescription') %></th>
-            <th><%= t('views.lens_types.index.wearing_period') %></th>
-            <th><%= t('views.lens_types.index.action') %></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @lens_types.each do |lens_type| %>
-            <tr>
-              <td><%= lens_type.manufacturer %></td>
-              <td><%= lens_type.prescription %></td>
-              <td><%= lens_type.wearing_period %> <%= t('views.lens_types.index.d') %></td>
-              <td>
-                <%= link_to t('views.lens_types.index.select'), select_lens_lens_type_path(lens_type), class: 'ui blue button' %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+  <% else %>
+    <div class="ui divided items">
+      <% @lens_types.each do |lens_type| %>
+        <div class="item">
+          <div class="content">
+            <div class="ui header">
+              <%= t('views.lens_types.index.lenses') %> "<%= lens_type.manufacturer %> (<%= show_prescription(lens_type.prescription) %>)"
+
+            </div>
+            <div class="description">
+              <%= t('views.lens_types.index.wearing_period') %>: <strong><%= lens_type.wearing_period %></strong> <%= t('views.lens_types.index.d') %>
+            </div>
+            <div class="extra">
+              <div class="ui left floated menu">
+                <div class="item">
+                  <%= link_to t('views.lens_types.index.select'), select_lens_lens_type_path(lens_type), class: 'ui button' %>
+                </div>
+                <div class="ui simple dropdown item">
+                  <%= t('views.lens_types.index.additional_actions') %>
+                  <i class="dropdown icon"></i>
+                  <div class="menu">
+                    <%= link_to t('views.lens_types.index.edit'), '#', class: 'item' %>
+                    <%= link_to t('views.lens_types.index.delete'), '#', class: 'item' %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
-  </div>
-    <% end %>
+  <% end %>
   <div class="ui segment">
     <p><%= link_to t('views.lens_types.index.new'), new_lens_type_path, class: 'ui blue button' %></p>
   </div>

@@ -1,7 +1,8 @@
-<h1 class="ui header"><%= t('views.lenses.show.header') %> "<%= @lens.lens_type.manufacturer.capitalize %> (<%= show_prescription(@lens.lens_type.prescription) %>)"</h1>
+<h1 class="ui header"><%= t('views.lenses.show.header') %> "<%= @lens.lens_type.manufacturer %>
+  (<%= show_prescription(@lens.lens_type.prescription) %>)"</h1>
 
 <div class="ui segment">
-  <p><strong><%= t('views.lenses.show.usage_hours') %>:</strong> <%= show_rounded(@lens.usage_hours/24) %></p>
+  <p><strong><%= t('views.lenses.show.usage_hours') %>:</strong> <%= show_rounded(@lens.usage_hours / 24) %></p>
   <div class="ui relaxed divided list">
     <% count = 0 %>
     <% @usages.each do |usage| %>
