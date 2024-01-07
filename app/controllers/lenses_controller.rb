@@ -37,12 +37,36 @@ class LensesController < ApplicationController
     if usage && usage.lens_id == lens.id
       lens.usage_hours -= usage.usage_hours
       usage.destroy
+      lens.last_usage_date = lens.usages.maximum(:usage_date)
       lens.save
       flash[:success] = t('controllers.lenses.usage_deleted')
     else
       flash[:error] = t('controllers.lenses.delete_error')
     end
     redirect_to lens_path(lens)
+  end
+
+  def destroy
+    @lens = Lens.find(params[:id])
+    if @lens.present? && (@lens.lens_type.user == current_user)
+      @lens.status = 'Disposed'
+      @lens.save
+      flash[:success] = t('controllers.lenses.deleted')
+    else
+      flash[:error] = t('controllers.lenses.lens_delete_error')
+    end
+    redirect_to lenses_path
+  end
+
+  def change
+    @lens = Lens.find(params[:id])
+    @new_lens = Lens.new(status: 'Active', usage_hours: 0, lens_type: @lens.lens_type)
+    if @new_lens.save
+      @lens.status = 'Disposed'
+      @lens.save
+      flash[:success] = t('controllers.lenses.lens_changed')
+    end
+    redirect_to lenses_path
   end
 
 
@@ -52,14 +76,14 @@ class LensesController < ApplicationController
     @lens = Lens.find_by(id: params[:id])
     return unless @lens.nil?
 
-    flash[:negative] = t('controllers.lenses.lens_not_found')
+    flash[:error] = t('controllers.lenses.lens_not_found')
     redirect_to root_path
   end
 
   def check_lens_ownership
     return if @lens.lens_type.user == current_user
 
-    flash[:negative] = t('controllers.lenses.prohibited')
+    flash[:error] = t('controllers.lenses.prohibited')
     redirect_to root_path
   end
 end

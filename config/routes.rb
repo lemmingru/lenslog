@@ -7,10 +7,11 @@ Rails.application.routes.draw do
       get 'select_lens'
     end
   end
-  resources :lenses, only: %i[index show] do
+  resources :lenses, only: %i[index show destroy] do
     member do
       get 'add_usage'
       get 'delete_usage'
+      get 'change'
     end
   end
   get '/signup', to: 'users#new'

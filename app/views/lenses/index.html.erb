@@ -7,12 +7,17 @@
     <div class="ui divided items">
       <% @lenses.each do |lens| %>
         <div class="item">
-        <div class="middle aligned content">
-          <div class="header">
+        <div class="middle">
+          <div class="ui header">
             <%= lens.lens_type.manufacturer.capitalize %> (<%= show_prescription(lens.lens_type.prescription) %>)<br>
           </div>
           <div class="description">
-            <%= t('views.lenses.index.d') %>: <strong><%= show_rounded(lens.usage_hours/24) %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></strong><br>
+            <% if lens.lens_type.wearing_period*24 <= lens.usage_hours %>
+              <i class="exclamation triangle icon"></i>
+            <% end %>
+            <%= t('views.lenses.index.d') %>: <strong><%= show_rounded(lens.usage_hours/24) %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></strong>
+
+            <br>
             <%= t('views.lenses.index.last_usage') %>: <strong><%= (l(lens.last_usage_date) if lens.last_usage_date.present?) || '–' %></strong>
           </div>
           <div class="extra">
@@ -25,8 +30,20 @@
                 <i class="dropdown icon"></i>
                 <div class="menu">
                   <%= link_to t('views.lenses.index.lens_log'), lens_path(lens), class: 'item' %>
-                  <div class="item">Что-то еще</div>
-                  <div class="item">И еще что-то эдакое</div>
+                  <%= link_to t('views.lenses.index.change_lens'),
+                              change_lens_path(lens),
+                              data: {
+                                confirm: t('views.lenses.index.confirm_change')
+                              },
+                              class: 'item' %>
+                  <%= link_to t('views.lenses.index.despose'),
+                              lens,
+                              method: :delete,
+                              data: {
+                                "turbo-method": :delete,
+                                "turbo-confirm": t('views.lenses.index.confirm_delete')
+                              },
+                              class: 'item' %>
                 </div>
               </div>
 
@@ -39,4 +56,5 @@
 
     </div>
   <% end %>
+  <%= link_to t('views.lenses.index.add_lens'), lens_types_path, class: 'item' %>
 </div>
