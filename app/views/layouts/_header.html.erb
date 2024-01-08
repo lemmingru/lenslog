@@ -1,14 +1,26 @@
 <header class="ui menu">
-  <div class="ui container">
-    <%= link_to t('views.layouts.header.appname'), root_path, id: "logo", class: "header item" %>
-    <%= link_to t('views.layouts.header.lens_types'), lens_types_path, id: "lens_types", class: "header item" %>
-    <%= link_to t('views.layouts.header.lenses'), lenses_path, id: "lenses", class: "header item" %>
-    <% if logged_in? %>
-      <%= link_to t('views.layouts.header.logout'), logout_path, data: { "turbo-method": :delete }, class: "header item" %>
-    <% else %>
-      <%= link_to t('views.layouts.header.login'), login_path, class: "header item" %>
-    <% end %>
 
-
+  <div class="header item">
+    <%= t('views.layouts.header.appname') %>
   </div>
+
+  <% if logged_in? %>
+    <%= link_to t('views.layouts.header.lenses'), lenses_path, id: "lenses", class: "item" %>
+    <%= link_to t('views.layouts.header.lens_types'), lens_types_path, id: "lens_types", class: "item" %>
+    <div class="right menu">
+      <div class="item">
+        <%= current_user.name %>
+      </div>
+      <%= link_to t('views.layouts.header.logout'), logout_path,
+                  data: {
+                    "turbo-method": :delete,
+                    "turbo-confirm": t('views.layouts.header.confirm_logout')
+                  },
+                  class: "item" %>
+    </div>
+  <% else %>
+    <%= link_to t('views.layouts.header.login'), login_path, class: "item" %>
+  <% end %>
+
+
 </header>

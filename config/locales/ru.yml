@@ -310,6 +310,7 @@ ru:
         login: "Вход"
         lens_types: "Типы линз"
         lenses: "Мои линзы"
+        confirm_logout: "Вы действительно хотите выйти из системы?"
     lenses:
       show:
         header: "Журнал использования линз"
