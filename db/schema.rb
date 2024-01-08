@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_06_113500) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_08_075624) do
   create_table "lens_types", force: :cascade do |t|
     t.string "manufacturer"
     t.string "prescription"
@@ -18,6 +18,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_06_113500) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.string "status"
     t.index ["user_id"], name: "index_lens_types_on_user_id"
   end
 

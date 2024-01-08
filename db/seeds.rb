@@ -28,11 +28,12 @@ User.create!(name: 'Иван Иванов',
 #                activated_at: Time.zone.now)
 # end
 
-LensType.create(user: User.find(1), manufacturer: 'Acuvue Oasis', prescription: '-1.75', wearing_period: 14)
-LensType.create(user: User.find(1), manufacturer: 'Acuvue Oasis', prescription: '-2.0', wearing_period: 14)
-LensType.create(user: User.find(2), manufacturer: 'Acuvue Oasis', prescription: '-2.5', wearing_period: 14)
-LensType.create(user: User.find(1), manufacturer: "B&L", prescription: '-1.75', wearing_period: 2)
-LensType.create(user: User.find(2), manufacturer: "B$L", prescription: '-2.0', wearing_period: 2)
+LensType.create(user: User.find(1), manufacturer: 'Acuvue Oasis', prescription: '-1.75', wearing_period: 14, status: "Active")
+LensType.create(user: User.find(1), manufacturer: 'Acuvue Oasis', prescription: '-2.0', wearing_period: 14, status: "Active")
+LensType.create(user: User.find(2), manufacturer: 'Acuvue Oasis', prescription: '-2.5', wearing_period: 14, status: "Active")
+LensType.create(user: User.find(1), manufacturer: "B&L", prescription: '-1.75', wearing_period: 2, status: "Active")
+LensType.create(user: User.find(2), manufacturer: "B$L", prescription: '-2.0', wearing_period: 2, status: "Active")
+LensType.create(user: User.find(1), manufacturer: "Hidden", prescription: '-2.0', wearing_period: 2, status: "Deleted")
 
 puts 'Создали типы линз'
 

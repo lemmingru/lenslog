@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :lens_types do
     member do
       get 'select_lens'
+      get 'delete_lens_type'
     end
   end
   resources :lenses, only: %i[index show destroy] do

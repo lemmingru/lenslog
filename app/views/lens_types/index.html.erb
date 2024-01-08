@@ -24,7 +24,11 @@
                   <i class="dropdown icon"></i>
                   <div class="menu">
                     <%= link_to t('views.lens_types.index.edit'), edit_lens_type_path(lens_type), class: 'item' %>
-                    <%= link_to t('views.lens_types.index.delete'), '#', class: 'item' %>
+                    <%= link_to t('views.lens_types.index.delete'), delete_lens_type_lens_type_path(lens_type), class: 'item',
+                                data: {
+                                  "turbo-method": :get,
+                                  "turbo-confirm": t('views.lens_types.index.confirm_delete')
+                                } %>
                   </div>
                 </div>
               </div>

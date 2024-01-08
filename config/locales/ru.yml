@@ -15,7 +15,7 @@ ru:
       lens_type:
         manufacturer: "Производитель"
         prescription: "Оптическая сила (диоптрии)"
-        wearing_period: "Период носки"
+        wearing_period: "Длительность носки (в днях)"
 
   date:
     abbr_day_names:
@@ -298,6 +298,8 @@ ru:
     lens_types:
       created: "Новый тип линз добавлен!"
       updated: "Информация о типе линз изменена успешно"
+      deleted: "Тип линз успешно удален!"
+      delete_error: "Нельзя удалить этот тип линз, так как вы еще используете линзы этого типа!"
     users:
       user_created: "Пользователь создан!"
   views:
@@ -361,6 +363,7 @@ ru:
         additional_actions: "Другие действия"
         edit: "Редактировать"
         delete: "Удалить"
+        confirm_delete: "Вы действительно хотите удалить этот тип линз?"
       form:
         save_changes: "Сохранить"
       new:
