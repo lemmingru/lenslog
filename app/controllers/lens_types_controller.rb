@@ -27,4 +27,18 @@ class LensTypesController < ApplicationController
   def lens_type_params
     params.require(:lens_type).permit( :manufacturer, :prescription, :wearing_period)
   end
+
+  def edit
+    @lens_type = LensType.find(params[:id])
+  end
+
+  def update
+    @lens_type = LensType.find(params[:id])
+    if @lens_type.update(lens_type_params)
+      flash[:positive] = t('controllers.lens_types.updated')
+      redirect_to lens_types_path
+    else
+      render 'edit', status: :unprocessable_entity
+    end
+  end
 end

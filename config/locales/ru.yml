@@ -297,6 +297,7 @@ ru:
       lens_changed: "Линзы заменены на новые линзы того же типа"
     lens_types:
       created: "Новый тип линз добавлен!"
+      updated: "Информация о типе линз изменена успешно"
     users:
       user_created: "Пользователь создан!"
   views:
@@ -361,9 +362,11 @@ ru:
         edit: "Редактировать"
         delete: "Удалить"
       form:
-        save_changes: "Добавить новый тип линз"
+        save_changes: "Сохранить"
       new:
         add_lens_type: "Новый тип линз"
+      edit:
+        edit_lens_type: "Редактировать тип линз"
     shared:
       error_messages:
         form_errors: "Ошибки при создании пользователя"

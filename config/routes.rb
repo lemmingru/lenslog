@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root 'lenses#index'
   get 'session/new'
   resources :users
-  resources :lens_types, only: %i[index new create] do
+  resources :lens_types do
     member do
       get 'select_lens'
     end

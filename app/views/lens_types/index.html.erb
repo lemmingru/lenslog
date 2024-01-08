@@ -23,7 +23,7 @@
                   <%= t('views.lens_types.index.additional_actions') %>
                   <i class="dropdown icon"></i>
                   <div class="menu">
-                    <%= link_to t('views.lens_types.index.edit'), '#', class: 'item' %>
+                    <%= link_to t('views.lens_types.index.edit'), edit_lens_type_path(lens_type), class: 'item' %>
                     <%= link_to t('views.lens_types.index.delete'), '#', class: 'item' %>
                   </div>
                 </div>
@@ -34,9 +34,9 @@
       <% end %>
     </div>
   <% end %>
-  <div class="ui segment">
-    <p><%= link_to t('views.lens_types.index.new'), new_lens_type_path, class: 'ui blue button' %></p>
-  </div>
+
+    <%= link_to t('views.lens_types.index.new'), new_lens_type_path, class: 'item' %>
+
 </div>
 
 
