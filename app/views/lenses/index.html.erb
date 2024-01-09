@@ -1,68 +1,66 @@
-<div class="ui container">
-  <h1 class="ui header"><%= t('views.lenses.index.header') %></h1>
-  <% if @lenses.empty? %>
-    <p><%= t('views.lenses.index.empty_list') %> </p>
+<h1 class="ui header"><%= t('views.lenses.index.header') %></h1>
+<% if @lenses.empty? %>
+  <p><%= t('views.lenses.index.empty_list') %> </p>
 
-  <% else %>
-    <div class="ui divided items">
-      <% @lenses.each do |lens| %>
-        <div class="item">
-          <div class="content">
-            <div class="ui header">
-              <%= lens.lens_type.manufacturer %> (<%= show_prescription(lens.lens_type.prescription) %>)<br>
-            </div>
-            <div class="description">
-              <% if lens.lens_type.wearing_period * 24 <= lens.usage_hours %>
-                <i class="exclamation triangle icon"></i>
-              <% end %>
-              <%= t('views.lenses.index.d') %>:
-              <strong><%= show_rounded(lens.usage_hours.to_f / 24) %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></strong>
+<% else %>
+  <div class="ui divided items">
+    <% @lenses.each do |lens| %>
+      <div class="item">
+        <div class="content">
+          <div class="ui header">
+            <%= lens.lens_type.manufacturer %> (<%= show_prescription(lens.lens_type.prescription) %>)<br>
+          </div>
+          <div class="description">
+            <% if lens.lens_type.wearing_period * 24 <= lens.usage_hours %>
+              <i class="exclamation triangle icon"></i>
+            <% end %>
+            <%= t('views.lenses.index.d') %>:
+            <strong><%= show_rounded(lens.usage_hours.to_f / 24) %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></strong>
 
-              <br>
-              <%= t('views.lenses.index.last_usage') %>:
-              <strong><%= (l(lens.last_usage_date) if lens.last_usage_date.present?) || '–' %></strong>
-            </div>
-            <div class="extra">
-              <div class="ui left floated menu">
-                <div class="item">
-                  <%= link_to t('views.lenses.index.use_1_day'), add_usage_lens_path(lens, hours: 24), class: 'ui button' %>
+            <br>
+            <%= t('views.lenses.index.last_usage') %>:
+            <strong><%= (l(lens.last_usage_date) if lens.last_usage_date.present?) || '–' %></strong>
+          </div>
+          <div class="extra">
+            <div class="ui left floated stackable menu">
+              <div class="item">
+                <%= link_to t('views.lenses.index.use_1_day'), add_usage_lens_path(lens, hours: 24), class: 'ui button' %>
+              </div>
+              <div class="item">
+                <%= link_to t('views.lenses.index.use_half_day'), add_usage_lens_path(lens, hours: 12), class: 'ui button' %>
+              </div>
+
+              <div class="ui simple dropdown item">
+                <%= t('views.lenses.index.additional_actions') %>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <%= link_to t('views.lenses.index.lens_log'), lens_path(lens), class: 'item' %>
+                  <%= link_to t('views.lenses.index.change_lens'),
+                              change_lens_path(lens),
+                              class: 'item',
+                              data: {
+                                "turbo-method": :get,
+                                "turbo-confirm": t('views.lenses.index.confirm_change')
+                              } %>
+
+                  <%= link_to t('views.lenses.index.despose'),
+                              lens,
+                              method: :delete,
+                              data: {
+                                "turbo-method": :delete,
+                                "turbo-confirm": t('views.lenses.index.confirm_delete')
+                              },
+                              class: 'item' %>
                 </div>
-                <div class="item">
-                  <%= link_to t('views.lenses.index.use_half_day'), add_usage_lens_path(lens, hours: 12), class: 'ui button' %>
-                </div>
-
-                <div class="ui simple dropdown item">
-                  <%= t('views.lenses.index.additional_actions') %>
-                  <i class="dropdown icon"></i>
-                  <div class="menu">
-                    <%= link_to t('views.lenses.index.lens_log'), lens_path(lens), class: 'item' %>
-                    <%= link_to t('views.lenses.index.change_lens'),
-                                change_lens_path(lens),
-                                class: 'item',
-                                data: {
-                                  "turbo-method": :get,
-                                  "turbo-confirm": t('views.lenses.index.confirm_change')
-                                } %>
-
-                    <%= link_to t('views.lenses.index.despose'),
-                                lens,
-                                method: :delete,
-                                data: {
-                                  "turbo-method": :delete,
-                                  "turbo-confirm": t('views.lenses.index.confirm_delete')
-                                },
-                                class: 'item' %>
-                  </div>
-                </div>
-
               </div>
 
             </div>
+
           </div>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
-    </div>
-  <% end %>
-  <%= link_to t('views.lenses.index.add_lens'), lens_types_path, class: 'item' %>
-</div>
+  </div>
+<% end %>
+<%= link_to t('views.lenses.index.add_lens'), lens_types_path, class: 'item' %>

@@ -1,46 +1,45 @@
-<div class="ui container">
-  <h1 class="ui header"><%= t('views.lens_types.index.header') %></h1>
-  <% if @lens_types.empty? %>
-    <p><%= t('views.lens_types.index.empty_list') %></p>
-  <% else %>
-    <div class="ui divided items">
-      <% @lens_types.each do |lens_type| %>
-        <div class="item">
-          <div class="content">
-            <div class="ui header">
-              <%= t('views.lens_types.index.lenses') %> "<%= lens_type.manufacturer %> (<%= show_prescription(lens_type.prescription) %>)"
+<h1 class="ui header"><%= t('views.lens_types.index.header') %></h1>
+<% if @lens_types.empty? %>
+  <p><%= t('views.lens_types.index.empty_list') %></p>
+<% else %>
+  <div class="ui divided items">
+    <% @lens_types.each do |lens_type| %>
+      <div class="item">
+        <div class="content">
+          <div class="ui header">
+            <%= t('views.lens_types.index.lenses') %> "<%= lens_type.manufacturer %>
+            (<%= show_prescription(lens_type.prescription) %>)"
 
-            </div>
-            <div class="description">
-              <%= t('views.lens_types.index.wearing_period') %>: <strong><%= lens_type.wearing_period %></strong> <%= t('views.lens_types.index.d') %>
-            </div>
-            <div class="extra">
-              <div class="ui left floated menu">
-                <div class="item">
-                  <%= link_to t('views.lens_types.index.select'), select_lens_lens_type_path(lens_type), class: 'ui button' %>
-                </div>
-                <div class="ui simple dropdown item">
-                  <%= t('views.lens_types.index.additional_actions') %>
-                  <i class="dropdown icon"></i>
-                  <div class="menu">
-                    <%= link_to t('views.lens_types.index.edit'), edit_lens_type_path(lens_type), class: 'item' %>
-                    <%= link_to t('views.lens_types.index.delete'), delete_lens_type_lens_type_path(lens_type), class: 'item',
-                                data: {
-                                  "turbo-method": :get,
-                                  "turbo-confirm": t('views.lens_types.index.confirm_delete')
-                                } %>
-                  </div>
+          </div>
+          <div class="description">
+            <%= t('views.lens_types.index.wearing_period') %>:
+            <strong><%= lens_type.wearing_period %></strong> <%= t('views.lens_types.index.d') %>
+          </div>
+          <div class="extra">
+            <div class="ui left floated stackable menu">
+              <div class="item">
+                <%= link_to t('views.lens_types.index.select'), select_lens_lens_type_path(lens_type), class: 'ui button' %>
+              </div>
+              <div class="ui simple dropdown item">
+                <%= t('views.lens_types.index.additional_actions') %>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                  <%= link_to t('views.lens_types.index.edit'), edit_lens_type_path(lens_type), class: 'item' %>
+                  <%= link_to t('views.lens_types.index.delete'), delete_lens_type_lens_type_path(lens_type), class: 'item',
+                              data: {
+                                "turbo-method": :get,
+                                "turbo-confirm": t('views.lens_types.index.confirm_delete')
+                              } %>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      <% end %>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
 
-    <%= link_to t('views.lens_types.index.new'), new_lens_type_path, class: 'item' %>
-
-</div>
+<%= link_to t('views.lens_types.index.new'), new_lens_type_path, class: 'item' %>
 
 
