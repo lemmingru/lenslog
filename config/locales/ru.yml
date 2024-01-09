@@ -382,3 +382,11 @@ ru:
       new:
         sign_up: "Регистрация"
         create_my_account: "Создать учетную запись"
+    sessions:
+      new:
+        log_in_header: "Вход в систему"
+        password: "Пароль"
+        remember_me: "Больше не спрашивать пароль в этом браузере"
+        log_in_button: "Вход"
+        new_user: "Новый пользователь?"
+        sign_up: "Пожалуйста, зарегистрируйтесь!"

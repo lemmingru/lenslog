@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         forget(@user)
       end
       log_in @user
-      redirect_to forwarding_url || @user
+      redirect_to forwarding_url || root_url
 
     else
       flash.now[:negative] = t('controllers.sessions.flash.invalid_password')

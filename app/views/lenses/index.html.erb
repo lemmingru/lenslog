@@ -16,7 +16,7 @@
                 <i class="exclamation triangle icon"></i>
               <% end %>
               <%= t('views.lenses.index.d') %>:
-              <strong><%= show_rounded(lens.usage_hours / 24) %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></strong>
+              <strong><%= show_rounded(lens.usage_hours.to_f / 24) %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></strong>
 
               <br>
               <%= t('views.lenses.index.last_usage') %>:
