@@ -4,7 +4,7 @@
     <%= link_to t('views.layouts.header.lenses'), lenses_path, id: "lenses", class: "item" %>
     <%= link_to t('views.layouts.header.lens_types'), lens_types_path, id: "lens_types", class: "item" %>
     <div class="right menu">
-      <div class="item">
+      <div class="disabled item">
         <%= current_user.name %>
       </div>
       <%= link_to t('views.layouts.header.logout'), logout_path,
