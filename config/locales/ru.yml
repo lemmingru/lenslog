@@ -347,6 +347,7 @@ ru:
         confirm_change: "Подтвердите замену этих линз на новые"
         ok_button: "Ok"
         cancel_button: "Отмена"
+        usages: "Всего сеансов носки"
     lens_types:
       index:
         header: "Выберите тип линз"
