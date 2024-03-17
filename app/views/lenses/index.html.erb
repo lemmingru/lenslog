@@ -16,6 +16,7 @@
             <% end %>
             <%= t('views.lenses.index.usages') %>:
             <strong><%= lens.usages.count %></strong>
+            <br>
             <%= t('views.lenses.index.d') %>:
             <strong><%= show_rounded(lens.usage_hours.to_f / 24) %> <%= t('views.lenses.index.out_of') %> <%= lens.lens_type.wearing_period %></strong>
 
